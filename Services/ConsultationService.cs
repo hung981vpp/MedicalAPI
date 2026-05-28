@@ -22,10 +22,11 @@ public sealed class ConsultationService(MedicalDbContext db)
             }
 
             var now = DateTimeOffset.UtcNow;
-            var record = db.MedicalRecords.FirstOrDefault(x => x.AppointmentId == request.AppointmentId)
-                ?? new MedicalRecord
+            var record = db.MedicalRecords.FirstOrDefault(x => x.AppointmentId == request.AppointmentId);
+            if (record is null)
+            {
+                record = new MedicalRecord
                 {
-                    Id = db.NextRecordId(),
                     AppointmentId = request.AppointmentId,
                     PatientId = request.PatientId,
                     DoctorId = request.DoctorId,
@@ -33,15 +34,12 @@ public sealed class ConsultationService(MedicalDbContext db)
                     CreatedAt = now,
                     UpdatedAt = now
                 };
-
-            if (!db.MedicalRecords.Contains(record))
-            {
                 db.MedicalRecords.Add(record);
+                db.SaveChanges();
             }
 
             var session = new ActiveConsultationSession
             {
-                Id = db.NextSessionId(),
                 AppointmentId = request.AppointmentId,
                 PatientId = request.PatientId,
                 DoctorId = request.DoctorId,
@@ -149,7 +147,6 @@ public sealed class ConsultationService(MedicalDbContext db)
         {
             existing = new MedicalRecordLock
             {
-                Id = db.NextLockId(),
                 MedicalRecordId = medicalRecordId,
                 LockedByUserId = userId,
                 LockedAt = now

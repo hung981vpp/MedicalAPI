@@ -92,7 +92,6 @@ public sealed class MedicalRecordService(MedicalDbContext db)
 
             var referral = new ReferralLetter
             {
-                Id = db.NextReferralId(),
                 MedicalRecordId = record.Id,
                 PatientId = record.PatientId,
                 DoctorId = userId,
@@ -148,7 +147,6 @@ public sealed class MedicalRecordService(MedicalDbContext db)
     {
         db.MedicalRecordLogs.Add(new MedicalRecordLog
         {
-            Id = db.NextLogId(),
             MedicalRecordId = recordId,
             UserId = userId,
             Action = action,

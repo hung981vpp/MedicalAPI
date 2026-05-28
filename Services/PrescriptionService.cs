@@ -27,7 +27,6 @@ public sealed class PrescriptionService(MedicalDbContext db)
             var allergyText = profile?.Allergies ?? string.Empty;
             var prescription = new Prescription
             {
-                Id = db.NextPrescriptionId(),
                 MedicalRecordId = record.Id,
                 PatientId = record.PatientId,
                 DoctorId = userId,
@@ -54,8 +53,6 @@ public sealed class PrescriptionService(MedicalDbContext db)
 
                 prescription.Items.Add(new PrescriptionItem
                 {
-                    Id = db.NextPrescriptionItemId(),
-                    PrescriptionId = prescription.Id,
                     MedicineId = medicine.MedicineId,
                     MedicineName = medicine.MedicineName,
                     Quantity = itemRequest.Quantity,

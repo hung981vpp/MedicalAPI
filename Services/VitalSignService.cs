@@ -25,7 +25,6 @@ public sealed class VitalSignService(MedicalDbContext db)
         {
             var vital = new VitalSign
             {
-                Id = db.NextVitalSignId(),
                 PatientId = request.PatientId,
                 AppointmentId = request.AppointmentId,
                 MedicalRecordId = request.MedicalRecordId,

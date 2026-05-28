@@ -17,7 +17,6 @@ public sealed class LabOrderService(MedicalDbContext db)
 
             var order = new LabOrder
             {
-                Id = db.NextLabOrderId(),
                 MedicalRecordId = record.Id,
                 PatientId = record.PatientId,
                 DoctorId = userId,
@@ -31,8 +30,6 @@ public sealed class LabOrderService(MedicalDbContext db)
             {
                 order.Details.Add(new LabOrderDetail
                 {
-                    Id = db.NextLabDetailId(),
-                    LabOrderId = order.Id,
                     TestName = detail.TestName,
                     Unit = detail.Unit,
                     ReferenceRange = detail.ReferenceRange

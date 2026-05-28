@@ -37,7 +37,6 @@ public sealed class PatientProfileService(MedicalDbContext db)
             {
                 profile = new PatientMedicalProfile
                 {
-                    Id = db.NextProfileId(),
                     PatientId = request.PatientId,
                     CreatedAt = now
                 };

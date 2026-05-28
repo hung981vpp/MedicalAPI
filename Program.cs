@@ -252,7 +252,6 @@ static void SeedDemoData(MedicalDbContext db)
             db.PatientMedicalProfiles.AddRange([
                 new PatientMedicalProfile
                 {
-                    Id = db.NextProfileId(),
                     PatientId = 25,
                     PatientName = "Nguyen Van An",
                     DateOfBirth = new DateOnly(2002, 5, 12),
@@ -266,7 +265,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new PatientMedicalProfile
                 {
-                    Id = db.NextProfileId(),
                     PatientId = 26,
                     PatientName = "Le Thi Mai",
                     DateOfBirth = new DateOnly(1988, 9, 21),
@@ -280,7 +278,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new PatientMedicalProfile
                 {
-                    Id = db.NextProfileId(),
                     PatientId = 27,
                     PatientName = "Pham Minh Khoa",
                     DateOfBirth = new DateOnly(2015, 3, 2),
@@ -294,7 +291,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new PatientMedicalProfile
                 {
-                    Id = db.NextProfileId(),
                     PatientId = 28,
                     PatientName = "Tran Van Binh",
                     DateOfBirth = new DateOnly(1959, 12, 4),
@@ -308,7 +304,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new PatientMedicalProfile
                 {
-                    Id = db.NextProfileId(),
                     PatientId = 29,
                     PatientName = "Hoang Thu Ha",
                     DateOfBirth = new DateOnly(1996, 6, 18),
@@ -327,7 +322,6 @@ static void SeedDemoData(MedicalDbContext db)
             db.VitalSigns.AddRange([
                 new VitalSign
                 {
-                    Id = db.NextVitalSignId(),
                     PatientId = 25,
                     AppointmentId = 3001,
                     RecordedByUserId = 12,
@@ -342,7 +336,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new VitalSign
                 {
-                    Id = db.NextVitalSignId(),
                     PatientId = 26,
                     AppointmentId = 3002,
                     RecordedByUserId = 12,
@@ -357,7 +350,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new VitalSign
                 {
-                    Id = db.NextVitalSignId(),
                     PatientId = 27,
                     AppointmentId = 3003,
                     RecordedByUserId = 13,
@@ -372,7 +364,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new VitalSign
                 {
-                    Id = db.NextVitalSignId(),
                     PatientId = 28,
                     AppointmentId = 3004,
                     RecordedByUserId = 12,
@@ -392,7 +383,6 @@ static void SeedDemoData(MedicalDbContext db)
             db.MedicalRecords.AddRange([
                 new MedicalRecord
                 {
-                    Id = db.NextRecordId(),
                     PatientId = 25,
                     DoctorId = 7,
                     AppointmentId = 2901,
@@ -408,7 +398,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new MedicalRecord
                 {
-                    Id = db.NextRecordId(),
                     PatientId = 28,
                     DoctorId = 9,
                     AppointmentId = 2808,
@@ -428,7 +417,6 @@ static void SeedDemoData(MedicalDbContext db)
         {
             db.LabOrders.Add(new LabOrder
             {
-                Id = db.NextLabOrderId(),
                 MedicalRecordId = 2,
                 PatientId = 28,
                 DoctorId = 9,
@@ -441,7 +429,6 @@ static void SeedDemoData(MedicalDbContext db)
                 [
                     new LabOrderDetail
                     {
-                        Id = db.NextLabDetailId(),
                         LabOrderId = 1,
                         TestName = "Glucose doi",
                         ResultValue = "8.4",
@@ -451,7 +438,6 @@ static void SeedDemoData(MedicalDbContext db)
                     },
                     new LabOrderDetail
                     {
-                        Id = db.NextLabDetailId(),
                         LabOrderId = 1,
                         TestName = "Creatinine",
                         ResultValue = "89",
@@ -468,7 +454,6 @@ static void SeedDemoData(MedicalDbContext db)
             db.Prescriptions.AddRange([
                 new Prescription
                 {
-                    Id = db.NextPrescriptionId(),
                     MedicalRecordId = 1,
                     PatientId = 25,
                     DoctorId = 7,
@@ -482,7 +467,6 @@ static void SeedDemoData(MedicalDbContext db)
                     [
                         new PrescriptionItem
                         {
-                            Id = db.NextPrescriptionItemId(),
                             PrescriptionId = 1,
                             MedicineId = 1,
                             MedicineName = "Paracetamol 500mg",
@@ -494,7 +478,6 @@ static void SeedDemoData(MedicalDbContext db)
                         },
                         new PrescriptionItem
                         {
-                            Id = db.NextPrescriptionItemId(),
                             PrescriptionId = 1,
                             MedicineId = 3,
                             MedicineName = "Loratadine 10mg",
@@ -508,7 +491,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new Prescription
                 {
-                    Id = db.NextPrescriptionId(),
                     MedicalRecordId = 2,
                     PatientId = 28,
                     DoctorId = 9,
@@ -522,7 +504,6 @@ static void SeedDemoData(MedicalDbContext db)
                     [
                         new PrescriptionItem
                         {
-                            Id = db.NextPrescriptionItemId(),
                             PrescriptionId = 2,
                             MedicineId = 6,
                             MedicineName = "Amlodipine 5mg",
@@ -534,7 +515,6 @@ static void SeedDemoData(MedicalDbContext db)
                         },
                         new PrescriptionItem
                         {
-                            Id = db.NextPrescriptionItemId(),
                             PrescriptionId = 2,
                             MedicineId = 7,
                             MedicineName = "Metformin 500mg",
@@ -552,7 +532,6 @@ static void SeedDemoData(MedicalDbContext db)
         {
             db.ReferralLetters.Add(new ReferralLetter
             {
-                Id = db.NextReferralId(),
                 MedicalRecordId = 2,
                 PatientId = 28,
                 DoctorId = 9,
@@ -583,7 +562,6 @@ static void SeedDemoData(MedicalDbContext db)
             db.MedicalRecordLogs.AddRange([
                 new MedicalRecordLog
                 {
-                    Id = db.NextLogId(),
                     MedicalRecordId = 1,
                     UserId = 7,
                     Action = "medical_record.completed",
@@ -592,7 +570,6 @@ static void SeedDemoData(MedicalDbContext db)
                 },
                 new MedicalRecordLog
                 {
-                    Id = db.NextLogId(),
                     MedicalRecordId = 2,
                     UserId = 9,
                     Action = "medical_record.completed",
