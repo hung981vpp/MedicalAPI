@@ -38,3 +38,4 @@ E:\KTR_KTPM\MedicalRecordService\MedicalRecordService\bin\Debug\net8.0\Microsoft
 E:\KTR_KTPM\MedicalRecordService\MedicalRecordService\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 E:\KTR_KTPM\MedicalRecordService\MedicalRecordService\bin\Debug\net8.0\Npgsql.dll
 E:\KTR_KTPM\MedicalRecordService\MedicalRecordService\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+E:\KTR_KTPM\MedicalRecordService\MedicalRecordService\obj\Debug\net8.0\MedicalRecordService.sourcelink.json
