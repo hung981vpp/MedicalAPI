@@ -1,0 +1,1971 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "MedicalRecordService",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/consultations/start": {
+      "post": {
+        "tags": [
+          "Consultation"
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartConsultationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartConsultationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartConsultationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/consultations/{sessionId}/complete": {
+      "post": {
+        "tags": [
+          "Consultation"
+        ],
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/consultations/{sessionId}/cancel": {
+      "post": {
+        "tags": [
+          "Consultation"
+        ],
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/consultations/medical-records/{recordId}/locks": {
+      "post": {
+        "tags": [
+          "Consultation"
+        ],
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Consultation"
+        ],
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/consultations/medical-records/{recordId}/locks/refresh": {
+      "post": {
+        "tags": [
+          "Consultation"
+        ],
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/events/appointment-checked-in": {
+      "post": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentCheckedInEvent"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentCheckedInEvent"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentCheckedInEvent"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/events/medicine-synced": {
+      "post": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedicineSyncedEvent"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedicineSyncedEvent"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedicineSyncedEvent"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/medical-records/{recordId}/lab-orders": {
+      "post": {
+        "tags": [
+          "LabOrders"
+        ],
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLabOrderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLabOrderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLabOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "LabOrders"
+        ],
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/lab-orders/{id}/results": {
+      "put": {
+        "tags": [
+          "LabOrders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLabOrderResultsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLabOrderResultsRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLabOrderResultsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/exam-queue": {
+      "get": {
+        "tags": [
+          "LocalCatalog"
+        ],
+        "parameters": [
+          {
+            "name": "doctorId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/local-medicines": {
+      "get": {
+        "tags": [
+          "LocalCatalog"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/logs/medical-records": {
+      "get": {
+        "tags": [
+          "Logs"
+        ],
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/medical-records": {
+      "get": {
+        "tags": [
+          "MedicalRecords"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/medical-records/{id}": {
+      "get": {
+        "tags": [
+          "MedicalRecords"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "MedicalRecords"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMedicalRecordRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMedicalRecordRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMedicalRecordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/medical-records/{id}/complete": {
+      "post": {
+        "tags": [
+          "MedicalRecords"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteConsultationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteConsultationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteConsultationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/medical-records/{id}/referrals": {
+      "post": {
+        "tags": [
+          "MedicalRecords"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReferralRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReferralRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReferralRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "MedicalRecords"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/outbox": {
+      "get": {
+        "tags": [
+          "Outbox"
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/patient-profiles": {
+      "get": {
+        "tags": [
+          "PatientProfiles"
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/patient-profiles/{patientId}": {
+      "get": {
+        "tags": [
+          "PatientProfiles"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PatientProfiles"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertPatientProfileRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertPatientProfileRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertPatientProfileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/medical-records/{recordId}/prescriptions": {
+      "post": {
+        "tags": [
+          "Prescriptions"
+        ],
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePrescriptionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePrescriptionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePrescriptionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/prescriptions/{id}": {
+      "get": {
+        "tags": [
+          "Prescriptions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Prescriptions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePrescriptionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePrescriptionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePrescriptionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/prescriptions/{id}/finalize": {
+      "post": {
+        "tags": [
+          "Prescriptions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/vital-signs/patient/{patientId}": {
+      "get": {
+        "tags": [
+          "VitalSigns"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/vital-signs": {
+      "post": {
+        "tags": [
+          "VitalSigns"
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "Demo auth user id, example: 7 for Doctor or 25 for Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Role",
+            "in": "header",
+            "description": "Role: Admin, Doctor, Nurse, Receptionist, Patient",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Patient-Id",
+            "in": "header",
+            "description": "Required when X-Role is Patient",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVitalSignRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVitalSignRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVitalSignRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AppointmentCheckedInEvent": {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "eventName": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "appointmentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "patientId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "patientName": {
+            "type": "string",
+            "nullable": true
+          },
+          "patientDob": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "doctorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "doctorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "specialty": {
+            "type": "string",
+            "nullable": true
+          },
+          "examFee": {
+            "type": "number",
+            "format": "double"
+          },
+          "queueNumber": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompleteConsultationRequest": {
+        "type": "object",
+        "properties": {
+          "finalDiagnosis": {
+            "type": "string",
+            "nullable": true
+          },
+          "treatmentPlan": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateLabOrderDetailRequest": {
+        "type": "object",
+        "properties": {
+          "testName": {
+            "type": "string",
+            "nullable": true
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
+          },
+          "referenceRange": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateLabOrderRequest": {
+        "type": "object",
+        "properties": {
+          "orderType": {
+            "type": "string",
+            "nullable": true
+          },
+          "clinicalNote": {
+            "type": "string",
+            "nullable": true
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateLabOrderDetailRequest"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatePrescriptionItemRequest": {
+        "type": "object",
+        "properties": {
+          "medicineId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dosage": {
+            "type": "string",
+            "nullable": true
+          },
+          "frequency": {
+            "type": "string",
+            "nullable": true
+          },
+          "durationDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "instruction": {
+            "type": "string",
+            "nullable": true
+          },
+          "allergyOverrideCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatePrescriptionRequest": {
+        "type": "object",
+        "properties": {
+          "prescriptionType": {
+            "$ref": "#/components/schemas/PrescriptionType"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreatePrescriptionItemRequest"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateReferralRequest": {
+        "type": "object",
+        "properties": {
+          "targetHospital": {
+            "type": "string",
+            "nullable": true
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "clinicalSummary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateVitalSignRequest": {
+        "type": "object",
+        "properties": {
+          "patientId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "appointmentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "medicalRecordId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pulse": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bloodPressure": {
+            "type": "string",
+            "nullable": true
+          },
+          "temperatureC": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "spo2": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "heightCm": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "weightKg": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MedicineSyncedEvent": {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "eventName": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "medicineId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "medicineName": {
+            "type": "string",
+            "nullable": true
+          },
+          "activeIngredient": {
+            "type": "string",
+            "nullable": true
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrescriptionType": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "StartConsultationRequest": {
+        "type": "object",
+        "properties": {
+          "appointmentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "patientId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "doctorId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateLabOrderDetailRequest": {
+        "type": "object",
+        "properties": {
+          "detailId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "resultValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "conclusion": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateLabOrderResultsRequest": {
+        "type": "object",
+        "properties": {
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateLabOrderDetailRequest"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateMedicalRecordRequest": {
+        "type": "object",
+        "properties": {
+          "symptoms": {
+            "type": "string",
+            "nullable": true
+          },
+          "physicalExam": {
+            "type": "string",
+            "nullable": true
+          },
+          "preliminaryDiagnosis": {
+            "type": "string",
+            "nullable": true
+          },
+          "finalDiagnosis": {
+            "type": "string",
+            "nullable": true
+          },
+          "treatmentPlan": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpsertPatientProfileRequest": {
+        "type": "object",
+        "properties": {
+          "patientId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "patientName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "bloodType": {
+            "type": "string",
+            "nullable": true
+          },
+          "allergies": {
+            "type": "string",
+            "nullable": true
+          },
+          "chronicDiseases": {
+            "type": "string",
+            "nullable": true
+          },
+          "emergencyContactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "emergencyContactPhone": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
