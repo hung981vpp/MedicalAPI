@@ -15,4 +15,10 @@ public sealed class HealthController : ControllerBase
             timestamp = DateTimeOffset.UtcNow
         });
     }
+
+    [HttpHead("/health")]
+    public IActionResult HealthHead()
+    {
+        return Ok();
+    }
 }
